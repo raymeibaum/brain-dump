@@ -14,7 +14,7 @@ class PostsController extends Controller
      */
     public function index()
     {
-        return view('posts.index', ['posts' => Post::all()]);
+        return view('post.index', ['posts' => Post::all()]);
     }
 
     /**
@@ -24,7 +24,7 @@ class PostsController extends Controller
      */
     public function create()
     {
-        //
+        return view('post.create');
     }
 
     /**
@@ -35,7 +35,8 @@ class PostsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $post = Post::create($request->all());
+        return redirect()->route('post.show', ['post' => $post]);  
     }
 
     /**
@@ -46,7 +47,7 @@ class PostsController extends Controller
      */
     public function show(Post $post)
     {
-        return view('posts.show', ['post' => $post]);
+        return view('post.show', ['post' => $post]);
     }
 
     /**
@@ -57,7 +58,7 @@ class PostsController extends Controller
      */
     public function edit(Post $post)
     {
-        //
+        return view('post.edit', ['post' => $post]);
     }
 
     /**
@@ -69,7 +70,11 @@ class PostsController extends Controller
      */
     public function update(Request $request, Post $post)
     {
-        //
+        $post->title = $request->title;
+        $post->body = $request->body;
+        $post->save();
+        
+        return redirect()->route('post.show', ['post' => $post]);
     }
 
     /**
@@ -80,6 +85,7 @@ class PostsController extends Controller
      */
     public function destroy(Post $post)
     {
-        //
+        $post->delete();
+        return redirect()->route('post.index');
     }
 }

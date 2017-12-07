@@ -11,8 +11,7 @@
     <body>
         <div class="container">
             <h1 class="title">Brain dump.</h1>
-        </div>
-        <div class="container">
+            <hr>
             @yield('content')
         </div>
     </body>
