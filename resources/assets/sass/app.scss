@@ -5,6 +5,9 @@
 // Variables
 @import "variables";
 
+// Utilities
+@import "utilities";
+
 // Components
 @import "components/components";
 
@@ -14,3 +17,15 @@
 // Bootstrap
 @import "~bootstrap-sass/assets/stylesheets/bootstrap";
 @import "~normalize.css/normalize.css";
+
+html,
+body {
+    height: 100vh;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+}

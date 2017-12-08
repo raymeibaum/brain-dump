@@ -9,10 +9,12 @@
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     </head>
     <body>
-        <div class="container">
-            <h1 class="title">Brain dump.</h1>
-            <hr>
-            @yield('content')
-        </div>
+        @include('partials.header')
+        <main class="u-main">
+            <div class="container">
+                @yield('content')
+            </div>
+        </main>
+        @include('partials.footer')
     </body>
 </html>

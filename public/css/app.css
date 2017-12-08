@@ -451,6 +451,22 @@ template {
 }
 @charset "UTF-8";
 
+.u-main {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 0 auto;
+          flex: 1 0 auto;
+}
+
+.c-footer {
+  background-color: rgba(0, 0, 0, 0.05);
+  margin-top: 15px;
+}
+
+.c-footer__text {
+  margin: 0;
+  padding: 1rem 0;
+}
+
 /*!
  * Bootstrap v3.3.7 (http://getbootstrap.com)
  * Copyright 2011-2016 Twitter, Inc.
@@ -8799,5 +8815,23 @@ button.close {
   .hidden-print {
     display: none !important;
   }
+}
+
+html,
+body {
+  height: 100vh;
+}
+
+body {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
 

@@ -14,7 +14,7 @@ class PostsController extends Controller
      */
     public function index()
     {
-        return view('post.index', ['posts' => Post::all()]);
+        return view('posts.index', ['posts' => Post::all()]);
     }
 
     /**
@@ -24,7 +24,7 @@ class PostsController extends Controller
      */
     public function create()
     {
-        return view('post.create');
+        return view('posts.create');
     }
 
     /**
@@ -35,6 +35,11 @@ class PostsController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'title' => 'bail|required|max:255',
+            'body' => 'required',
+        ]);
+        
         $post = Post::create($request->all());
         return redirect()->route('post.show', ['post' => $post]);  
     }
@@ -47,7 +52,7 @@ class PostsController extends Controller
      */
     public function show(Post $post)
     {
-        return view('post.show', ['post' => $post]);
+        return view('posts.show', ['post' => $post]);
     }
 
     /**
@@ -58,7 +63,7 @@ class PostsController extends Controller
      */
     public function edit(Post $post)
     {
-        return view('post.edit', ['post' => $post]);
+        return view('posts.edit', ['post' => $post]);
     }
 
     /**
@@ -69,11 +74,13 @@ class PostsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Post $post)
-    {
-        $post->title = $request->title;
-        $post->body = $request->body;
-        $post->save();
+    {   
+        $request->validate([
+            'title' => 'bail|required|max:255',
+            'body' => 'required',
+        ]);
         
+        $post->update($request->all());
         return redirect()->route('post.show', ['post' => $post]);
     }
 

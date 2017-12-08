@@ -1,7 +1,8 @@
 @extends('layouts.master')
 
 @section('content')
-<h3>{{ $post->title }}</h3>
+<h3>{{ $post->title }}<br>
+<small>{{ $post->created_at->toFormattedDateString() }}</small></h3>
 <p>{{ $post->body }}</p>
 <hr>
 <form method="post" action="{{ route('post.delete', ['post' => $post]) }}" onSubmit="return confirm('Are you sure you wish to delete {{ $post->title }}?');">
